@@ -1,0 +1,9 @@
+# File yang tidak perlu ikut diunggah ke GitHub.
+# (backend/ dan frontend/ punya .gitignore sendiri untuk vendor, node_modules, .env, dll.)
+
+# Pengaturan lokal Claude Code
+.claude/
+
+# File sampah sistem operasi
+Thumbs.db
+.DS_Store

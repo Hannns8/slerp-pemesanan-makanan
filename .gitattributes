@@ -1,0 +1,10 @@
+# File .bat harus berakhiran baris CRLF (format Windows); jika tidak,
+# perintah seperti "goto" bisa gagal setelah proyek di-clone dari GitHub.
+*.bat text eol=crlf
+
+# File biner: jangan diubah oleh Git
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.svg text
+*.phar binary

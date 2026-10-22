@@ -1,0 +1,143 @@
+/* =========================================================
+   PANEL ADMIN
+   ========================================================= */
+
+/* ---------- Login ---------- */
+.admin-login { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 100vh; background: var(--cream); }
+.login-art {
+  margin: 12px;
+  border-radius: var(--radius);
+  background: radial-gradient(70% 60% at 70% 70%, rgba(232, 70, 43, 0.5), transparent 60%), var(--ink);
+  color: var(--cream);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-art .display { font-size: clamp(60px, 8vw, 120px); position: relative; z-index: 1; }
+.login-art .serif-i { color: var(--mustard); }
+.login-art img { position: absolute; right: -10%; bottom: -14%; width: 62%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; box-shadow: 0 40px 60px -20px rgba(0, 0, 0, 0.6), 0 0 0 12px rgba(251, 244, 230, 0.08); }
+.login-form { align-self: center; justify-self: center; width: min(400px, 100% - 32px); padding: 40px 0; }
+.login-form .eyebrow { color: var(--chili); }
+.login-form h2 { font-family: var(--font-display); font-size: 36px; text-transform: uppercase; color: var(--green); margin: 10px 0 26px; }
+.back-link { display: block; text-align: center; margin-top: 20px; font-size: 14px; color: var(--muted); }
+
+/* ---------- Layout ---------- */
+.admin { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; background: #f4ecdc; }
+.admin-loading { padding: 80px; text-align: center; color: var(--muted); }
+.admin-side { background: var(--ink); color: var(--cream); padding: 28px 18px; display: flex; flex-direction: column; gap: 6px; position: sticky; top: 0; height: 100vh; }
+.admin-role { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.55; margin: 2px 0 26px; }
+.admin-side nav { display: grid; gap: 4px; }
+.admin-side nav a { padding: 12px 14px; border-radius: 12px; font-weight: 500; transition: background 0.2s; }
+.admin-side nav a:hover { background: rgba(251, 244, 230, 0.08); }
+.admin-side nav a.active { background: var(--chili); }
+.admin-user { margin-top: auto; display: grid; padding: 14px; border-radius: 14px; background: rgba(251, 244, 230, 0.06); }
+.admin-user small { opacity: 0.6; font-size: 12px; }
+.admin-user .text-btn { color: var(--mustard); justify-self: start; }
+.admin-main { padding: 28px clamp(16px, 3vw, 40px); min-width: 0; }
+.admin-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; gap: 12px; }
+.admin-head h1 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 34px; color: var(--green); margin: 0; }
+.pad { padding: 20px; }
+
+.stat-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px; }
+.stat { text-align: left; padding: 14px 16px; border-radius: 16px; border: 0; background: var(--paper); display: grid; box-shadow: inset 0 0 0 1.5px transparent; transition: box-shadow 0.2s; }
+.stat b { font-family: var(--font-display); font-size: 28px; color: var(--green); line-height: 1.1; }
+.stat span { font-size: 13px; color: var(--muted); }
+.stat.active { box-shadow: inset 0 0 0 2px var(--chili); }
+
+.filters { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.filters .input { width: auto; flex: 1; min-width: 160px; padding: 11px 14px; }
+
+.orders-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; align-items: start; }
+.orders-list, .orders-detail { background: var(--paper); border-radius: 20px; overflow: hidden; }
+.orders-detail { position: sticky; top: 20px; max-height: calc(100vh - 40px); overflow-y: auto; }
+.order-row { width: 100%; display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 14px 18px; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; transition: background 0.2s; }
+.order-row:hover { background: rgba(242, 182, 50, 0.1); }
+.order-row.active { background: rgba(232, 70, 43, 0.08); box-shadow: inset 4px 0 0 var(--chili); }
+.order-row small { display: block; color: var(--muted); font-size: 13px; }
+.order-row-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.product-row img { width: 48px; height: 48px; border-radius: 12px; background: #f1e5cd; object-fit: cover; flex-shrink: 0; }
+.product-row > div:nth-child(2) { flex: 1; }
+
+.badge { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: rgba(29, 20, 16, 0.08); white-space: nowrap; }
+.s-menunggu_pembayaran, .b-menunggu { background: rgba(242, 182, 50, 0.3); color: #6b4800; }
+.s-diterima, .s-diproses { background: rgba(31, 74, 59, 0.14); color: var(--green); }
+.s-siap_diambil, .s-dikirim { background: var(--mustard); color: var(--text); }
+.s-selesai, .b-diterima { background: var(--green); color: var(--cream); }
+.s-dibatalkan, .b-ditolak { background: rgba(232, 70, 43, 0.14); color: var(--chili-dk); }
+.b-belum_dibayar { background: rgba(29, 20, 16, 0.08); color: var(--muted); }
+
+.detail { padding: 22px; }
+.detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.detail-head h2 { font-family: var(--font-display); text-transform: uppercase; margin: 0; color: var(--green); font-size: 24px; }
+.detail-head small { color: var(--muted); }
+.detail section { padding: 14px 0; border-top: 1px solid var(--line); }
+.detail h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--chili-dk); }
+.detail p { margin: 0 0 4px; }
+.note { background: rgba(242, 182, 50, 0.2); padding: 8px 12px; border-radius: 10px; font-size: 14px; margin-top: 6px !important; }
+.mini-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.mini-table td { padding: 6px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.mini-table small { display: block; color: var(--muted); }
+.mini-table .tot td { font-weight: 800; border: 0; }
+.num { text-align: right; white-space: nowrap; }
+.pay-card { display: flex; justify-content: space-between; gap: 12px; padding: 12px; border-radius: 14px; background: var(--cream); margin-bottom: 8px; flex-wrap: wrap; }
+.pay-card small { display: block; color: var(--muted); font-size: 13px; }
+.pay-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.status-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+.modal { position: fixed; inset: 0; background: rgba(15, 36, 28, 0.7); z-index: 90; display: grid; place-items: center; padding: 20px; }
+.modal-box { position: relative; background: var(--paper); border-radius: 20px; padding: 16px; max-width: 900px; width: 100%; max-height: 90vh; overflow: auto; }
+.modal-box img { margin: 0 auto; max-height: 80vh; }
+.modal-box iframe { width: 100%; height: 80vh; border: 0; }
+
+/* ---------- Produk ---------- */
+.kategori-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: var(--paper); padding: 12px 16px; border-radius: 16px; margin-bottom: 14px; }
+.kategori-bar form { display: flex; gap: 6px; margin-left: auto; }
+.kategori-bar .input { padding: 8px 12px; width: 160px; }
+.kategori-bar .alert { width: 100%; margin: 6px 0 0; }
+.kat-chip { display: inline-flex; align-items: center; gap: 4px; padding: 5px 6px 5px 12px; border-radius: 999px; background: var(--cream); font-size: 14px; font-weight: 600; }
+.kat-chip small { color: var(--muted); font-weight: 400; }
+.kat-chip button { border: 0; background: none; padding: 2px 6px; border-radius: 999px; }
+.kat-chip button:hover { background: rgba(29, 20, 16, 0.08); }
+.kat-chip.off { opacity: 0.5; text-decoration: line-through; }
+.photo-field { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+.photo-field img, .photo-empty { width: 96px; height: 96px; border-radius: 18px; background: #f1e5cd; object-fit: cover; flex-shrink: 0; }
+.photo-empty { display: grid; place-items: center; font-size: 12px; color: var(--muted); text-align: center; }
+.photo-field .field { margin: 0; }
+.checks { display: grid; gap: 8px; margin: 4px 0 18px; }
+.checks label { display: flex; gap: 10px; align-items: center; font-size: 15px; cursor: pointer; }
+.checks input { width: 18px; height: 18px; accent-color: var(--green); }
+.opsi-manager { margin-top: 18px; }
+.opsi-group { padding: 8px 0; }
+.opsi-group > b { display: block; font-size: 14px; margin-bottom: 4px; }
+.opsi-row { display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; padding: 6px 10px; border-radius: 10px; background: var(--cream); margin-bottom: 4px; font-size: 14px; }
+.opsi-row.off { opacity: 0.5; }
+.opsi-form { display: grid; grid-template-columns: 1fr 1.4fr 0.8fr auto; gap: 6px; margin-top: 10px; }
+.opsi-form .input { padding: 9px 12px; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th { text-align: left; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.table td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table tr.off { opacity: 0.55; }
+
+@media (max-width: 1100px) {
+  .orders-layout { grid-template-columns: 1fr; }
+  .orders-detail { position: static; max-height: none; }
+  .stat-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px) {
+  .admin { grid-template-columns: 1fr; }
+  .admin-side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 14px; gap: 10px; }
+  .admin-role { display: none; }
+  .admin-side nav { display: flex; flex-wrap: wrap; }
+  .admin-side nav a { padding: 8px 12px; font-size: 14px; }
+  .admin-user { margin: 0 0 0 auto; padding: 6px 10px; }
+  .admin-user small { display: none; }
+  .admin-login { grid-template-columns: 1fr; }
+  .login-art { min-height: 260px; }
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+  .opsi-form { grid-template-columns: 1fr 1fr; }
+  .table { display: block; overflow-x: auto; }
+}

@@ -1,0 +1,225 @@
+/* =========================================================
+   GLOBAL STYLE — warna, huruf, tombol, form.
+   Ubah warna di :root untuk mengganti tema seluruh website.
+   ========================================================= */
+
+:root {
+  --ink: #0f241c;        /* hijau sangat gelap (latar hero) */
+  --green: #14352a;      /* hijau tua */
+  --green-2: #1f4a3b;
+  --chili: #e8462b;      /* merah cabai (aksen utama) */
+  --chili-dk: #c4331b;
+  --chili-deep: #b0281a; /* merah tua untuk hover tombol tambah ke keranjang */
+  --mustard: #f2b632;    /* kuning mustard (aksen kedua) */
+  --cream: #fbf4e6;      /* latar utama */
+  --paper: #fffaf0;
+  --text: #1d1410;
+  --muted: #6d6257;
+  --line: rgba(29, 20, 16, 0.14);
+
+  --font-display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --radius: 28px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+::selection { background: var(--chili); color: var(--paper); }
+
+.container { width: min(1200px, 100% - 32px); margin-inline: auto; }
+
+/* ---------- Tipografi ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 2px currentColor;
+  /* currentColor dipakai stroke; warna asli diwarisi lewat --stroke */
+}
+.outline-cream { color: transparent; -webkit-text-stroke: 2px var(--cream); }
+.outline-chili { color: transparent; -webkit-text-stroke: 2px var(--chili); }
+.outline-green { color: transparent; -webkit-text-stroke: 2px var(--green); }
+.serif-i { font-family: var(--font-serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.eyebrow::before, .eyebrow.both::after { content: ''; width: 36px; height: 1.5px; background: currentColor; opacity: 0.6; }
+
+/* ---------- Tombol ---------- */
+.btn {
+  --bg: var(--chili);
+  --fg: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.4s var(--ease), opacity 0.2s, box-shadow 0.5s var(--ease), color 0.3s;
+}
+/*
+ * Efek hover semua tombol: lingkaran merah tua menyebar dari titik masuk kursor
+ * (dan mengecil ke titik keluarnya). Posisi kursor (--x, --y) diisi oleh
+ * src/utils/efekTombol.js. Dipakai juga oleh tombol bulat (.round-btn, badge hero).
+ */
+.btn, .round-btn, .badge-center button { --x: 50%; --y: 50%; position: relative; overflow: hidden; isolation: isolate; }
+.btn::before, .round-btn::before, .badge-center button::before {
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 260%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--chili-deep) 55%, #9e2416 100%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.65s var(--ease);
+  z-index: -1;
+  pointer-events: none;
+}
+.btn:hover::before, .round-btn:hover::before, .badge-center button:hover::before { transform: translate(-50%, -50%) scale(1); }
+.btn:hover { color: var(--paper); transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(176, 40, 26, 0.75); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn .arrow { transition: transform 0.4s var(--ease); }
+.btn:hover .arrow { transform: translateX(5px); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn:disabled::before { display: none; }
+.btn:disabled:hover { color: var(--fg); transform: none; box-shadow: none; }
+.btn-dark { --bg: var(--green); }
+.btn-ghost { --bg: transparent; --fg: var(--text); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 1.5px transparent, 0 14px 28px -12px rgba(176, 40, 26, 0.75); }
+.btn-small { padding: 10px 18px; font-size: 11px; }
+.btn-block { width: 100%; }
+
+.link-underline {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat;
+  padding-bottom: 4px;
+  transition: background-size 0.5s var(--ease);
+}
+.link-underline:hover { background-size: 0 1.5px; background-position: 100% 100%; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.pill:hover { border-color: var(--text); }
+.pill.active { background: var(--green); color: var(--cream); border-color: var(--green); }
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(232, 70, 43, 0.12);
+  color: var(--chili-dk);
+}
+.tag.green { background: rgba(20, 53, 42, 0.1); color: var(--green); }
+.tag.mustard { background: rgba(242, 182, 50, 0.25); color: #7a5300; }
+.tag.grey { background: rgba(29, 20, 16, 0.08); color: var(--muted); }
+
+/* ---------- Form ---------- */
+.field { display: grid; gap: 6px; margin-bottom: 18px; }
+.field label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.field .hint { font-size: 13px; color: var(--muted); }
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  font: inherit;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(20, 53, 42, 0.12); }
+textarea.input { min-height: 96px; resize: vertical; }
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(232, 70, 43, 0.1);
+  color: var(--chili-dk);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.alert.info { background: rgba(242, 182, 50, 0.2); color: #6b4800; }
+.alert.ok { background: rgba(31, 74, 59, 0.12); color: var(--green); }
+
+/* ---------- Halaman umum (selain beranda) ---------- */
+.page { padding: 140px 0 100px; min-height: 70vh; }
+.page-head { margin-bottom: 40px; }
+.page-head .display { font-size: clamp(44px, 8vw, 96px); color: var(--green); }
+.card {
+  background: var(--paper);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 1px 0 var(--line), 0 20px 50px -30px rgba(15, 36, 28, 0.35);
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
