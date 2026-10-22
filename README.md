@@ -30,7 +30,8 @@ Pilih salah satu:
 
 - **Dengan Git:**
   ```bash
-  git clone https://github.com/<nama-akun>/<nama-repo>.git
+  git clone https://github.com/Hannns8/slerp-pemesanan-makanan.git
+  cd slerp-pemesanan-makanan
   ```
 - **Tanpa Git:** buka halaman repository → tombol hijau **Code** → **Download ZIP** → ekstrak.
   > Jika file ZIP diunduh, klik kanan ZIP → **Properties** → centang **Unblock** sebelum diekstrak,
@@ -274,7 +275,7 @@ git init
 git add .
 git commit -m "Website pemesanan makanan Slerp"
 git branch -M main
-git remote add origin https://github.com/<nama-akun>/<nama-repo>.git
+git remote add origin https://github.com/Hannns8/slerp-pemesanan-makanan.git
 git push -u origin main
 ```
 
