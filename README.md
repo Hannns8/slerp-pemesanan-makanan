@@ -85,6 +85,10 @@ Buka folder proyek di VS Code (**File → Open Folder**), lalu buka dua terminal
 .\3-jalankan-frontend.bat
 ```
 
+Saat folder pertama kali dibuka, VS Code akan menawarkan ekstensi yang disarankan
+(dari `.vscode/extensions.json`): PHP Intelephense, Laravel Extra Intellisense,
+ES7+ React snippets, dan Prettier. Klik **Install** agar autocomplete PHP/React aktif.
+
 ### 1.6 Cara manual (tanpa file .bat, juga untuk macOS / Linux)
 
 Pastikan perintah `php -v` menunjukkan **PHP 8.2+** dan MySQL sudah berjalan, lalu buat database
